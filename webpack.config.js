@@ -10,7 +10,7 @@ module.exports = {
     publicPath: 'public/assets/',
     filename:   'mainBundle.js'
   },
-  plugins:    [
+  plugins:   [
     new ExtractTextPlugin("styles.css")
   ],
   devServer: {
@@ -25,17 +25,23 @@ module.exports = {
       }
     ],
     loaders:    [
-      {test: /\.woff(2)?(\?v=[0-9]\.[0-9]\.[0-9])?$/, loader: "url-loader?limit=10000&minetype=application/font-woff"},
-      {test: /\.(ttf|eot|svg)(\?v=[0-9]\.[0-9]\.[0-9])?$/, loader: "file-loader"},
+      {
+        test:   /\.woff(2)?(\?v=[0-9]\.[0-9]\.[0-9])?$/,
+        loader: "url-loader?limit=10000&minetype=application/font-woff"
+      },
+      {
+        test:   /\.(ttf|eot|svg)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
+        loader: "file-loader"
+      },
       {
         test:    /\.css$/,
         exclude: /node_modules/,
-        loader:  ExtractTextPlugin.extract("style-loader", "css-loader")
+        loader:  ExtractTextPlugin.extract("style-loader", "css-loader!autoprefixer-loader")
       },
       {
         test:    /\.scss$/,
         exclude: /node_modules/,
-        loader:  ExtractTextPlugin.extract("style-loader", "css-loader!sass-loader")
+        loader:  ExtractTextPlugin.extract("style-loader", "css-loader!autoprefixer-loader!sass-loader")
       },
       {
         test:    /\.es6$/,
