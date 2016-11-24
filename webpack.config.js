@@ -34,14 +34,14 @@ module.exports = {
         loader: "file-loader"
       },
       {
-        test:    /\.css$/,
+        test: /\.(png|jpg|ttf|eot|svg)$/,
         exclude: /node_modules/,
-        loader:  ExtractTextPlugin.extract("style-loader", "css-loader!autoprefixer-loader")
+        loader: 'url-loader?limit=10000'
       },
       {
-        test:    /\.scss$/,
+        test:    /\.s?css$/,
         exclude: /node_modules/,
-        loader:  ExtractTextPlugin.extract("style-loader", "css-loader!autoprefixer-loader!sass-loader")
+        loader:  ExtractTextPlugin.extract("style-loader", "css-loader!sass-loader", { publicPath: './'})
       },
       {
         test:    /\.es6$/,
